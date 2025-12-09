@@ -1,2 +1,16 @@
 # RealerVRN
 Going ghostly private online
+
+# Virtual Realer Network (VRN) – Complete Ghost Mode
+
+One-command install → fully invisible proxy server.  
+Tested and working on Fedora 41, Debian 12, Ubuntu 24.04.
+
+## Goal
+Your real IP, MAC, and traffic pattern become untraceable.  
+DPI, ISP logging, Great Firewall, corporate filters — everything sees normal Microsoft CDN traffic.
+
+## One-Command Install (run as root on a fresh VPS)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/yourname/VRN/main/install.sh | bash
