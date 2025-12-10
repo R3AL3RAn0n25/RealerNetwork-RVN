@@ -1,0 +1,16 @@
+listen_port        = 443
+health_port        = 8080
+rotation_interval  = "15m"
+mac_interface      = "eth0"
+adaptive_rotation  = true
+
+[inbound]
+port     = 443
+protocol = "vless"
+tls_cert = "/etc/rvn/fullchain.pem"
+tls_key  = "/etc/rvn/privkey.pem"
+uuid     = "YOUR_UUID_HERE"
+
+[outbound]
+reality_domain = "www.microsoft.com"
+shortid        = "YOUR_SHORTID_HERE"
