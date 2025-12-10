@@ -38,18 +38,22 @@ type Config struct {
 	MacInterface     string `toml:"mac_interface"`
 	AdaptiveRotation bool   `toml:"adaptive_rotation"`
 
+	type Config struct {
+	// ... same fields ...
 	Inbound struct {
-		Port     int    `toml:"port"`
-		Protocol string `toml:"protocol"`
-		TLSCert  string `toml:"tls_cert"`
-		TLSKey   string `toml:"tls_key"`
+		UUID string `toml:"uuid"`
 	} `toml:"inbound"`
-
 	Outbound struct {
-		RealityDomain string `toml:"reality_domain"`
-		SSMethod      string `toml:"ss_method"`
+		ShortId string `toml:"shortid"`
 	} `toml:"outbound"`
 }
+
+// In startV2RayXrayChain(), replace the inbound user section with:
+users: []conf.User{
+	{ ID: cfg.Inbound.UUID, Flow: "xtls-rprx-vision" },
+},
+// and Reality shortId:
+ShortId: []string{cfg.Outbound.ShortId},
 
 var (
 	cfg       Config
@@ -205,3 +209,4 @@ func startHealthCheck() {
 	})
 	go http.ListenAndServe(fmt.Sprintf("127.0.0.1:%d", cfg.HealthPort), nil)
 }
+
